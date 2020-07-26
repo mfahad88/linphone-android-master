@@ -622,7 +622,7 @@ public class AccountSettingsFragment extends SettingsFragment {
         }
 
         if (mProxyConfig != null) {
-            mProxyConfig.setServerAddr("<sip:sip.vokka.net;transport=tls");
+            mProxyConfig.setServerAddr("<sip:sip.vokka.net;transport=tls>");
             Address identityAddress = mProxyConfig.getIdentityAddress();
             mAuthInfo = mProxyConfig.findAuthInfo();
             NatPolicy natPolicy = mProxyConfig.getNatPolicy();
@@ -656,7 +656,6 @@ public class AccountSettingsFragment extends SettingsFragment {
 
             mDisable.setChecked(!mProxyConfig.registerEnabled());
 
-            //
             mUseAsDefault.setChecked(mProxyConfig.equals(core.getDefaultProxyConfig()));
             mUseAsDefault.setEnabled(!mUseAsDefault.isChecked());
 
@@ -674,6 +673,7 @@ public class AccountSettingsFragment extends SettingsFragment {
             mPush.setChecked(mProxyConfig.isPushNotificationAllowed());
 
             Address proxy = Factory.instance().createAddress(mProxyConfig.getServerAddr());
+            proxy.setTransport(TransportType.Tls);
             if (proxy != null) {
                 mTransport.setValue(proxy.getTransport().toInt());
             }

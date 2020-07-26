@@ -79,6 +79,7 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
         accountCreator.setDomain(mDomain.getText().toString());
         accountCreator.setPassword(mPassword.getText().toString());
         accountCreator.setDisplayName(mDisplayName.getText().toString());
+        //        ProxyConfig proxyConfig=core.getP
 
         switch (mTransport.getCheckedRadioButtonId()) {
             case R.id.transport_udp:

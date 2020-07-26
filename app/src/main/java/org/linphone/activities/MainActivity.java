@@ -66,6 +66,7 @@ import org.linphone.core.Core;
 import org.linphone.core.CoreListenerStub;
 import org.linphone.core.ProxyConfig;
 import org.linphone.core.RegistrationState;
+import org.linphone.core.TransportType;
 import org.linphone.core.tools.Log;
 import org.linphone.dialer.DialerActivity;
 import org.linphone.fragments.EmptyFragment;
@@ -151,7 +152,33 @@ public abstract class MainActivity extends LinphoneGenericActivity
                         startActivity(intent);
                     }
                 });
+        Core core = LinphoneManager.getCore();
 
+        ProxyConfig[] proxyConfigs = core.getProxyConfigList();
+        proxyConfigs[0].setServerAddr("<sip:sip.vokka.net;transport=tls>");
+        Address addr = proxyConfigs[0].getIdentityAddress();
+        addr.setTransport(TransportType.Tls);
+        //        addr.setDomain("sip.vokka.net");
+        proxyConfigs[0].done();
+        core.addProxyConfig(proxyConfigs[0]);
+        AuthInfo authInfos = proxyConfigs[0].findAuthInfo();
+
+        for (ProxyConfig proxyConfig : proxyConfigs) {
+            Address address = proxyConfig.getIdentityAddress();
+            android.util.Log.e(
+                    "Proxy--->",
+                    proxyConfig.getServerAddr()
+                            + "\n"
+                            + address.getUsername()
+                            + "\n"
+                            + address.getPassword()
+                            + "\n"
+                            + address.getTransport()
+                            + "\n"
+                            + address.getDomain()
+                            + "\n"
+                            + address.asString());
+        }
         mMissedCalls = findViewById(R.id.missed_calls);
         mMissedMessages = findViewById(R.id.missed_chats);
 
@@ -312,6 +339,13 @@ public abstract class MainActivity extends LinphoneGenericActivity
         Core core = LinphoneManager.getCore();
         if (core != null) {
             core.addListener(mListener);
+            try {
+                ProxyConfig mProxyConfig = core.createProxyConfig();
+                mProxyConfig.setServerAddr("<sip:sip.vokka.net;transport=tls>");
+                Address identityAddress = mProxyConfig.getIdentityAddress();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             displayMissedChats();
             displayMissedCalls();
         }
