@@ -64,8 +64,9 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
                 getResources().getInteger(R.integer.phone_number_validation_code_length);
 
         TextView phoneNumber = findViewById(R.id.phone_number);
-        phoneNumber.setText(getAccountCreator().getPhoneNumber());
-
+        String number = getIntent().getExtras().getString("number");
+        //        phoneNumber.setText(getAccountCreator().getPhoneNumber());
+        phoneNumber.setText(number.replace("%2B", ""));
         mSmsCode = findViewById(R.id.sms_code);
         mSmsCode.addTextChangedListener(
                 new TextWatcher() {
@@ -83,12 +84,14 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
                 });
 
         mFinishCreation = findViewById(R.id.finish_account_creation);
-        mFinishCreation.setEnabled(false);
+        mFinishCreation.setEnabled(true);
         mFinishCreation.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AccountCreator accountCreator = getAccountCreator();
+                        mFinishCreation.setEnabled(false);
+
+                        /*AccountCreator accountCreator = getAccountCreator();
                         mFinishCreation.setEnabled(false);
                         accountCreator.setActivationCode(mSmsCode.getText().toString());
 
@@ -112,7 +115,7 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
                                             + status);
                             mFinishCreation.setEnabled(true);
                             showGenericErrorDialog(status);
-                        }
+                        }*/
                     }
                 });
 

@@ -29,14 +29,20 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 import org.linphone.LinphoneManager;
 import org.linphone.R;
+import org.linphone.client.ApiClient;
 import org.linphone.core.AccountCreator;
 import org.linphone.core.AccountCreatorListenerStub;
 import org.linphone.core.Core;
 import org.linphone.core.DialPlan;
 import org.linphone.core.tools.Log;
+import org.linphone.models.login.LoginResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PhoneAccountCreationAssistantActivity extends AssistantActivity {
     private TextView mCountryPicker, mError, mSipUri, mCreate;
@@ -69,7 +75,82 @@ public class PhoneAccountCreationAssistantActivity extends AssistantActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AccountCreator accountCreator = getAccountCreator();
+                        enableButtonsAndFields(false);
+
+                        if (mUseUsernameInsteadOfPhoneNumber.isChecked()) {
+                            //
+                            // accountCreator.setUsername(mUsername.getText().toString());
+                        } else {
+                            ApiClient.getInstance()
+                                    .createuser(
+                                            "%2B"
+                                                    + mPrefix.getText().toString().replace("+", "")
+                                                    + ""
+                                                    + mPhoneNumber.getText().toString(),
+                                            "123123")
+                                    .enqueue(
+                                            new Callback<LoginResponse>() {
+                                                @Override
+                                                public void onResponse(
+                                                        Call<LoginResponse> call,
+                                                        Response<LoginResponse> response) {
+                                                    if (response.isSuccessful()) {
+                                                        if (response.body()
+                                                                .getData()
+                                                                .getMessage()
+                                                                .equalsIgnoreCase("User created")) {
+
+                                                            Intent intent =
+                                                                    new Intent(
+                                                                            PhoneAccountCreationAssistantActivity
+                                                                                    .this,
+                                                                            PhoneAccountValidationAssistantActivity
+                                                                                    .class);
+                                                            intent.putExtra(
+                                                                    "number",
+                                                                    "%2B"
+                                                                            + mPrefix.getText()
+                                                                                    .toString()
+                                                                                    .replace(
+                                                                                            "+", "")
+                                                                            + ""
+                                                                            + mPhoneNumber
+                                                                                    .getText()
+                                                                                    .toString());
+                                                            startActivity(intent);
+                                                            Toast.makeText(
+                                                                            PhoneAccountCreationAssistantActivity
+                                                                                    .this,
+                                                                            ""
+                                                                                    + response.body()
+                                                                                            .getData()
+                                                                                            .getMessage(),
+                                                                            Toast.LENGTH_SHORT)
+                                                                    .show();
+                                                        } else {
+                                                            Toast.makeText(
+                                                                            PhoneAccountCreationAssistantActivity
+                                                                                    .this,
+                                                                            ""
+                                                                                    + response.body()
+                                                                                            .getData()
+                                                                                            .getMessage(),
+                                                                            Toast.LENGTH_SHORT)
+                                                                    .show();
+                                                            enableButtonsAndFields(true);
+                                                        }
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onFailure(
+                                                        Call<LoginResponse> call, Throwable t) {
+                                                    t.printStackTrace();
+                                                }
+                                            });
+                        }
+
+                        /*AccountCreator accountCreator = getAccountCreator();
                         enableButtonsAndFields(false);
 
                         if (mUseUsernameInsteadOfPhoneNumber.isChecked()) {
@@ -85,7 +166,7 @@ public class PhoneAccountCreationAssistantActivity extends AssistantActivity {
                                             + status);
                             enableButtonsAndFields(true);
                             showGenericErrorDialog(status);
-                        }
+                        }*/
                     }
                 });
         mCreate.setEnabled(false);
