@@ -1,5 +1,6 @@
 package org.linphone.Interfaces;
 
+import com.google.gson.JsonElement;
 import org.linphone.models.login.LoginResponse;
 import retrofit2.Call;
 import retrofit2.http.POST;
@@ -9,4 +10,10 @@ public interface ApiInterface {
     @POST("/api/createuser?username=admin&password=Tringy%232020$&reseller=0&signup=0&otp=1")
     Call<LoginResponse> createuser(
             @Query("createuser") String number, @Query("createpassword") String password);
+
+    @POST("/api/activateaccount")
+    Call<JsonElement> activateaccount(
+            @Query("username") String number,
+            @Query("password") String password,
+            @Query("otp") String otp);
 }

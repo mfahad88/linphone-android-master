@@ -28,11 +28,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import com.google.gson.JsonElement;
 import org.linphone.R;
+import org.linphone.client.ApiClient;
 import org.linphone.core.AccountCreator;
 import org.linphone.core.AccountCreatorListenerStub;
 import org.linphone.core.tools.Log;
 import org.linphone.settings.LinphonePreferences;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
     private TextView mFinishCreation;
@@ -64,7 +69,7 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
                 getResources().getInteger(R.integer.phone_number_validation_code_length);
 
         TextView phoneNumber = findViewById(R.id.phone_number);
-        String number = getIntent().getExtras().getString("number");
+        final String number = getIntent().getExtras().getString("number");
         //        phoneNumber.setText(getAccountCreator().getPhoneNumber());
         phoneNumber.setText(number.replace("%2B", ""));
         mSmsCode = findViewById(R.id.sms_code);
@@ -90,7 +95,27 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
                     @Override
                     public void onClick(View v) {
                         mFinishCreation.setEnabled(false);
+                        ApiClient.getInstance()
+                                .activateaccount(number, "123123", mSmsCode.getText().toString())
+                                .enqueue(
+                                        new Callback<JsonElement>() {
+                                            @Override
+                                            public void onResponse(
+                                                    Call<JsonElement> call,
+                                                    Response<JsonElement> response) {
+                                                if (response.isSuccessful()) {
+                                                    android.util.Log.e(
+                                                            "Activate Account---->",
+                                                            response.body().getAsString());
+                                                }
+                                            }
 
+                                            @Override
+                                            public void onFailure(
+                                                    Call<JsonElement> call, Throwable t) {
+                                                t.printStackTrace();
+                                            }
+                                        });
                         /*AccountCreator accountCreator = getAccountCreator();
                         mFinishCreation.setEnabled(false);
                         accountCreator.setActivationCode(mSmsCode.getText().toString());
