@@ -100,6 +100,10 @@ public class AccountSettingsFragment extends SettingsFragment {
             }
         }
 
+        mProxyConfig.edit();
+        mProxyConfig.setRoute(mProxy.getValue());
+        mProxyConfig.done();
+
         return mRootView;
     }
 
@@ -184,6 +188,7 @@ public class AccountSettingsFragment extends SettingsFragment {
         mLinkAccount = mRootView.findViewById(R.id.pref_link_account);
 
         mTransport = mRootView.findViewById(R.id.pref_transport);
+
         initTransportList();
     }
 
@@ -437,7 +442,10 @@ public class AccountSettingsFragment extends SettingsFragment {
                         }
                     }
                 });
-
+        mOutboundProxy.setChecked(true);
+        mProxyConfig.edit();
+        mProxyConfig.setRoute(mProxy.getValue());
+        mProxyConfig.done();
         mOutboundProxy.setListener(
                 new SettingListenerBase() {
                     @Override

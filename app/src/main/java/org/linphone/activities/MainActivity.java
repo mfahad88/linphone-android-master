@@ -156,6 +156,8 @@ public abstract class MainActivity extends LinphoneGenericActivity
 
         ProxyConfig[] proxyConfigs = core.getProxyConfigList();
         proxyConfigs[0].setServerAddr("<sip:sip.vokka.net;transport=tls>");
+        proxyConfigs[0].edit();
+        proxyConfigs[0].setRoute(proxyConfigs[0].getServerAddr());
         Address addr = proxyConfigs[0].getIdentityAddress();
         addr.setTransport(TransportType.Tls);
         //        addr.setDomain("sip.vokka.net");

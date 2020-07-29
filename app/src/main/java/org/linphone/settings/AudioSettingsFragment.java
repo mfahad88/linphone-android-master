@@ -228,7 +228,9 @@ public class AudioSettingsFragment extends SettingsFragment {
         mAudioCodecs.removeAllViews();
         Core core = LinphoneManager.getCore();
         if (core != null) {
+
             for (final PayloadType pt : core.getAudioPayloadTypes()) {
+
                 final SwitchSetting codec = new SwitchSetting(getActivity());
                 codec.setTitle(pt.getMimeType());
                 /* Special case */
@@ -238,7 +240,7 @@ public class AudioSettingsFragment extends SettingsFragment {
 
                 codec.setSubtitle(pt.getClockRate() + " Hz");
                 if (pt.getMimeType().equalsIgnoreCase("pcmu")
-                        || pt.getMimeType().equalsIgnoreCase("g722")) {
+                        || pt.getMimeType().equalsIgnoreCase("g729")) {
                     pt.enable(true);
                     codec.setChecked(true);
                 } else {
