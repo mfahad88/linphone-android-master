@@ -71,7 +71,7 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
         TextView phoneNumber = findViewById(R.id.phone_number);
         final String number = getIntent().getExtras().getString("number");
         //        phoneNumber.setText(getAccountCreator().getPhoneNumber());
-        phoneNumber.setText(number.replace("%2B", ""));
+        phoneNumber.setText(number);
         mSmsCode = findViewById(R.id.sms_code);
         mSmsCode.addTextChangedListener(
                 new TextWatcher() {
@@ -116,7 +116,7 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
                                                 t.printStackTrace();
                                             }
                                         });
-                        /*AccountCreator accountCreator = getAccountCreator();
+                       /* AccountCreator accountCreator = getAccountCreator();
                         mFinishCreation.setEnabled(false);
                         accountCreator.setActivationCode(mSmsCode.getText().toString());
 

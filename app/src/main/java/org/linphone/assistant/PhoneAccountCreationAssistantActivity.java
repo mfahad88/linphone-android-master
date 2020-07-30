@@ -83,8 +83,7 @@ public class PhoneAccountCreationAssistantActivity extends AssistantActivity {
                         } else {
                             ApiClient.getInstance()
                                     .createuser(
-                                            "%2B"
-                                                    + mPrefix.getText().toString().replace("+", "")
+                                            mPrefix.getText().toString()
                                                     + ""
                                                     + mPhoneNumber.getText().toString(),
                                             "123123")
@@ -108,11 +107,7 @@ public class PhoneAccountCreationAssistantActivity extends AssistantActivity {
                                                                                     .class);
                                                             intent.putExtra(
                                                                     "number",
-                                                                    "%2B"
-                                                                            + mPrefix.getText()
-                                                                                    .toString()
-                                                                                    .replace(
-                                                                                            "+", "")
+                                                                    mPrefix.getText().toString()
                                                                             + ""
                                                                             + mPhoneNumber
                                                                                     .getText()
