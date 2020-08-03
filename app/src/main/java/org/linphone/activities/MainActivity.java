@@ -102,6 +102,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
     protected String[] mPermissionsToHave;
 
     private CoreListenerStub mListener;
+    private LinphonePreferences mPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
 
         mOnBackPressGoHome = true;
         mAlwaysHideTabBar = false;
+        mPrefs = LinphonePreferences.instance();
 
         RelativeLayout history = findViewById(R.id.history);
         history.setOnClickListener(
@@ -155,15 +157,17 @@ public abstract class MainActivity extends LinphoneGenericActivity
         Core core = LinphoneManager.getCore();
 
         ProxyConfig[] proxyConfigs = core.getProxyConfigList();
-        proxyConfigs[0].setServerAddr("<sip:sip.vokka.net;transport=tls>");
-        proxyConfigs[0].edit();
-        proxyConfigs[0].setRoute(proxyConfigs[0].getServerAddr());
-        Address addr = proxyConfigs[0].getIdentityAddress();
-        addr.setTransport(TransportType.Tls);
-        //        addr.setDomain("sip.vokka.net");
-        proxyConfigs[0].done();
-        core.addProxyConfig(proxyConfigs[0]);
-        AuthInfo authInfos = proxyConfigs[0].findAuthInfo();
+        if (proxyConfigs.length > 0) {
+            proxyConfigs[0].setServerAddr("<sip:sip.vokka.net;transport=tls>");
+            proxyConfigs[0].edit();
+            proxyConfigs[0].setRoute(proxyConfigs[0].getServerAddr());
+            Address addr = proxyConfigs[0].getIdentityAddress();
+            addr.setTransport(TransportType.Tls);
+            //        addr.setDomain("sip.vokka.net");
+            proxyConfigs[0].done();
+            core.addProxyConfig(proxyConfigs[0]);
+            AuthInfo authInfos = proxyConfigs[0].findAuthInfo();
+        }
 
         for (ProxyConfig proxyConfig : proxyConfigs) {
             Address address = proxyConfig.getIdentityAddress();
@@ -307,12 +311,15 @@ public abstract class MainActivity extends LinphoneGenericActivity
         super.onStart();
 
         requestRequiredPermissions();
+        mPrefs.setServiceNotificationVisibility(false);
+        LinphoneContext.instance().getNotificationManager().stopForeground();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        mPrefs.setServiceNotificationVisibility(false);
+        LinphoneContext.instance().getNotificationManager().stopForeground();
         LinphoneContext.instance()
                 .getNotificationManager()
                 .removeForegroundServiceNotificationIfPossible();

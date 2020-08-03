@@ -21,6 +21,7 @@ package org.linphone.assistant;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -104,6 +105,14 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
                                                     Call<JsonElement> call,
                                                     Response<JsonElement> response) {
                                                 if (response.isSuccessful()) {
+                                                    //
+                                                    //      finish();
+                                                    startActivity(
+                                                            new Intent(
+                                                                    PhoneAccountValidationAssistantActivity
+                                                                            .this,
+                                                                    GenericConnectionAssistantActivity
+                                                                            .class));
                                                     android.util.Log.e(
                                                             "Activate Account---->",
                                                             response.body().getAsString());
@@ -116,7 +125,7 @@ public class PhoneAccountValidationAssistantActivity extends AssistantActivity {
                                                 t.printStackTrace();
                                             }
                                         });
-                       /* AccountCreator accountCreator = getAccountCreator();
+                        /* AccountCreator accountCreator = getAccountCreator();
                         mFinishCreation.setEnabled(false);
                         accountCreator.setActivationCode(mSmsCode.getText().toString());
 

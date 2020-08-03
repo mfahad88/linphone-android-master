@@ -45,10 +45,11 @@ public class LinphoneLauncherActivity extends Activity implements ServiceWaitThr
         if (getResources().getBoolean(R.bool.orientation_portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-
-        if (!getResources().getBoolean(R.bool.use_full_screen_image_splashscreen)) {
+        setContentView(R.layout.launch_screen);
+        /*if (!getResources().getBoolean(R.bool.use_full_screen_image_splashscreen)) {
             setContentView(R.layout.launch_screen);
-        } // Otherwise use drawable/launch_screen layer list up until first activity starts
+        } */
+        // Otherwise use drawable/launch_screen layer list up until first activity starts
     }
 
     @Override

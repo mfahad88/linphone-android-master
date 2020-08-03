@@ -211,7 +211,10 @@ public class AdvancedSettingsFragment extends SettingsFragment {
 
         mLogUploadUrl.setValue(mPrefs.getLogCollectionUploadServerUrl());
 
-        mBackgroundMode.setChecked(mPrefs.getServiceNotificationVisibility());
+        mBackgroundMode.setChecked(false);
+        mPrefs.setServiceNotificationVisibility(false);
+        LinphoneContext.instance().getNotificationManager().stopForeground();
+        // mBackgroundMode.setChecked(mPrefs.getServiceNotificationVisibility());
         if (Compatibility.isAppUserRestricted(getActivity())) {
             mBackgroundMode.setChecked(false);
             mBackgroundMode.setEnabled(false);
