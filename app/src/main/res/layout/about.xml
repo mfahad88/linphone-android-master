@@ -29,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:visibility="gone"
                 android:text="@string/app_description" />
 
             <TextView
@@ -38,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:visibility="gone"
                 android:paddingTop="20dp"
                 android:textColorLink="?attr/secondaryTextColor"
                 android:text="@string/about_version" />
@@ -49,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:visibility="gone"
                 android:textColorLink="?attr/secondaryTextColor"
                 android:text="@string/about_liblinphone_sdk_version" />
 

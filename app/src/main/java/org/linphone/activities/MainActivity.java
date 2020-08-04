@@ -113,7 +113,6 @@ public abstract class MainActivity extends LinphoneGenericActivity
         mOnBackPressGoHome = true;
         mAlwaysHideTabBar = false;
         mPrefs = LinphonePreferences.instance();
-
         RelativeLayout history = findViewById(R.id.history);
         history.setOnClickListener(
                 new View.OnClickListener() {
