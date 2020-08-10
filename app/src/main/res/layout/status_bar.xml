@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/status"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
+    android:layout_height="55dp"
     android:background="?attr/accentColor"
+    android:visibility="visible"
     android:orientation="horizontal">
 
     <ImageView
@@ -14,16 +15,47 @@
         android:layout_centerInParent="true"
         android:contentDescription="@string/content_description_menu"
         android:padding="10dp"
+        android:visibility="gone"
         android:src="@drawable/menu" />
+
+    <RelativeLayout
+        android:id="@+id/side_menu_quit"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/accentColor"
+        android:gravity="bottom">
+
+        <ImageView
+            android:id="@+id/quit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:src="@drawable/quit" />
+
+        <TextView
+            android:id="@+id/quit"
+            style="@style/quit_button_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/quit_button"
+            android:gravity="center_vertical"
+            android:text="@string/quit" />
+
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/status_led"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_toRightOf="@id/side_menu_button"
+        android:layout_toRightOf="@id/side_menu_quit"
         android:adjustViewBounds="true"
         android:paddingLeft="5dp"
+        android:layout_marginLeft="10dp"
         android:src="@drawable/led_disconnected" />
 
     <TextView
@@ -37,6 +69,18 @@
         android:paddingLeft="5dp"
         android:text="@string/status_not_connected" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/balance_text"
+        android:layout_alignParentRight="true"
+        android:paddingRight="30dp"
+        android:gravity="center_vertical"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        style="@style/status_bar_font"
+        />
     <ImageView
         android:id="@+id/voicemail"
         android:layout_width="wrap_content"

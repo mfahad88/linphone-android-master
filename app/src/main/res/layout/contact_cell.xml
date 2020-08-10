@@ -87,7 +87,7 @@
             android:layout_toLeftOf="@id/friendLinphone"
             android:layout_toRightOf="@id/avatar">
 
-            <org.linphone.views.MarqueeTextView
+            <org.vokka.views.MarqueeTextView
                 android:id="@+id/name"
                 style="@style/contact_name_list_cell_font"
                 android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
                 android:layout_alignParentTop="true"
                 android:singleLine="true" />
 
-            <org.linphone.views.MarqueeTextView
+            <org.vokka.views.MarqueeTextView
                 android:id="@+id/contactOrganization"
                 style="@style/contact_organization_font"
                 android:layout_width="match_parent"

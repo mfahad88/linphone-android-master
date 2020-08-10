@@ -11,7 +11,7 @@
         android:layout_marginBottom="10dp"
         android:background="?attr/lighToolbarBackgroundColor">
 
-        <org.linphone.dialer.views.EraseButton
+        <org.vokka.dialer.views.EraseButton
             android:id="@+id/erase"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:contentDescription="@string/content_description_backspace"
             android:src="@drawable/backspace" />
 
-        <org.linphone.dialer.views.AddressText
+        <org.vokka.dialer.views.AddressText
             android:id="@+id/address"
             style="@style/numpad_composed_number_font"
             android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
 
         </RelativeLayout>
 
-        <org.linphone.call.views.CallButton
+        <org.vokka.call.views.CallButton
             android:id="@+id/start_call"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
             android:padding="12dp"
             android:src="@drawable/call_audio_start" />
 
-        <org.linphone.call.views.CallButton
+        <org.vokka.call.views.CallButton
             android:id="@+id/add_call"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
             android:visibility="gone"
             android:src="@drawable/call_add" />
 
-        <org.linphone.call.views.CallButton
+        <org.vokka.call.views.CallButton
             android:id="@+id/transfer_call"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

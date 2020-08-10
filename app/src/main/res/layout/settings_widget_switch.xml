@@ -15,7 +15,7 @@
         android:paddingTop="15dp"
         android:paddingBottom="15dp">
 
-        <org.linphone.views.MarqueeTextView
+        <org.vokka.views.MarqueeTextView
             android:id="@+id/setting_title"
             android:singleLine="true"
             android:layout_toLeftOf="@id/setting_switch"
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <org.linphone.views.MarqueeTextView
+        <org.vokka.views.MarqueeTextView
             android:id="@+id/setting_subtitle"
             android:singleLine="true"
             android:layout_toLeftOf="@id/setting_switch"

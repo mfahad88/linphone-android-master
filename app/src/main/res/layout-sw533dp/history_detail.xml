@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal" />
 
-            <org.linphone.views.MarqueeTextView
+            <org.vokka.views.MarqueeTextView
                 android:id="@+id/contact_address"
                 style="@style/sip_uri_font"
                 android:singleLine="true"

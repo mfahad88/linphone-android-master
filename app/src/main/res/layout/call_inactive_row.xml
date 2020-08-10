@@ -17,7 +17,7 @@
 
     </RelativeLayout>
 
-    <org.linphone.views.MarqueeTextView
+    <org.vokka.views.MarqueeTextView
         android:id="@+id/contact_name"
         style="@style/call_contact_name_paused_font"
         android:layout_width="0dip"

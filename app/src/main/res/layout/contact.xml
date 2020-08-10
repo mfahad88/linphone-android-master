@@ -79,7 +79,7 @@
                     android:gravity="center_horizontal"
                     android:layout_gravity="center" />
 
-                <org.linphone.views.MarqueeTextView
+                <org.vokka.views.MarqueeTextView
                     android:id="@+id/contactOrganization"
                     style="@style/contact_organization_font"
                     android:layout_width="wrap_content"

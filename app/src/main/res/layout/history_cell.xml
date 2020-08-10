@@ -84,7 +84,7 @@
                 android:padding="7dp"
                 android:src="@drawable/call_status_incoming" />
 
-            <org.linphone.views.MarqueeTextView
+            <org.vokka.views.MarqueeTextView
                 android:id="@+id/sip_uri"
                 style="@style/contact_name_list_cell_font"
                 android:layout_width="wrap_content"

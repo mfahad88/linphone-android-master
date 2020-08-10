@@ -67,8 +67,8 @@
     <string name="logs_url_copied_to_clipboard">Logs url copied into clipboard</string>
 
     <!-- Launch screen -->
-    <string name="app_description">the <i>libre</i> SIP client</string>
-
+    <!--<string name="app_description">the <i>libre</i> SIP client</string>-->
+    <string name="app_description">Powered by GlobalSend</string>
     <!-- Assistant -->
     <string name="welcome">Welcome</string>
     <string name="assistant">Back</string>

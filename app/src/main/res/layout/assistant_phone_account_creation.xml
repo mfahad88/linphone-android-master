@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/status"
-        android:name="org.linphone.fragments.StatusBarFragment"
+        android:name="org.vokka.fragments.StatusBarFragment"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         tools:layout="@layout/status_bar" />
@@ -118,6 +118,27 @@
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <EditText
+                            android:id="@+id/password"
+                            android:background="@drawable/resizable_textfield"
+                            android:textColor="@color/black_color"
+                            android:contentDescription="Password"
+                            android:inputType="textPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/phone_number"
+                            android:maxLines="1"/>
+
+                    </LinearLayout>
+
+
                     <CheckBox
                         android:id="@+id/use_username"
                         android:text="@string/use_username_instead_or_phone_number"
@@ -146,6 +167,7 @@
 
                     <TextView
                         android:id="@+id/sip_uri"
+                        android:visibility="gone"
                         style="@style/contact_organization_font"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/status"
-        android:name="org.linphone.fragments.StatusBarFragment"
+        android:name="org.vokka.fragments.StatusBarFragment"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         tools:layout="@layout/status_bar" />

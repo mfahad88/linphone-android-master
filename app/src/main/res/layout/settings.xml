@@ -35,49 +35,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <org.linphone.settings.widget.BasicSetting
+        <org.vokka.settings.widget.BasicSetting
             android:id="@+id/pref_tunnel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             linphone:title="@string/pref_tunnel_title"/>
 
-        <org.linphone.settings.widget.BasicSetting
+        <org.vokka.settings.widget.BasicSetting
             android:id="@+id/pref_audio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             linphone:title="@string/pref_audio_title"/>
 
-        <org.linphone.settings.widget.BasicSetting
+        <org.vokka.settings.widget.BasicSetting
             android:id="@+id/pref_video"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             linphone:title="@string/pref_video_title"/>
 
-        <org.linphone.settings.widget.BasicSetting
+        <org.vokka.settings.widget.BasicSetting
             android:id="@+id/pref_call"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             linphone:title="@string/pref_call_title"/>
 
-        <org.linphone.settings.widget.BasicSetting
+        <org.vokka.settings.widget.BasicSetting
             android:id="@+id/pref_chat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             linphone:title="@string/pref_chat_title"/>
 
-        <org.linphone.settings.widget.BasicSetting
+        <org.vokka.settings.widget.BasicSetting
             android:id="@+id/pref_network"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             linphone:title="@string/pref_network_title"/>
 
-        <org.linphone.settings.widget.BasicSetting
+        <org.vokka.settings.widget.BasicSetting
             android:id="@+id/pref_contact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             linphone:title="@string/pref_contact_title"/>
 
-        <org.linphone.settings.widget.BasicSetting
+        <org.vokka.settings.widget.BasicSetting
             android:id="@+id/pref_advanced"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

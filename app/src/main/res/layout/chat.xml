@@ -34,21 +34,21 @@
                 android:orientation="vertical"
                 android:paddingLeft="5dp">
 
-                <org.linphone.views.MarqueeTextView
+                <org.vokka.views.MarqueeTextView
                     android:id="@+id/subject"
                     style="@style/toolbar_small_title_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />
 
-                <org.linphone.views.MarqueeTextView
+                <org.vokka.views.MarqueeTextView
                     android:id="@+id/participants"
                     style="@style/toolbar_small_title_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />
 
-                <org.linphone.views.MarqueeTextView
+                <org.vokka.views.MarqueeTextView
                     android:id="@+id/sipUri"
                     style="@style/sip_uri_small_font"
                     android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                 android:padding="5dp"
                 android:src="@drawable/chat_file" />
 
-            <org.linphone.views.RichEditText
+            <org.vokka.views.RichEditText
                 android:id="@+id/message"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

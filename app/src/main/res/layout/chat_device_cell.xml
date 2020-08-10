@@ -6,7 +6,7 @@
     android:background="?attr/backgroundColor2"
     android:gravity="center_vertical">
 
-    <org.linphone.views.MarqueeTextView
+    <org.vokka.views.MarqueeTextView
         android:id="@+id/name"
         style="@style/contact_name_list_cell_font"
         android:layout_width="wrap_content"

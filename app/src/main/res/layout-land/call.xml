@@ -156,7 +156,7 @@
 
             <fragment
                 android:id="@+id/call_stats_fragment"
-                android:name="org.linphone.call.CallStatsFragment"
+                android:name="org.vokka.call.CallStatsFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:layout="@layout/call_stats" />
@@ -167,7 +167,7 @@
 
     <fragment
         android:id="@+id/status_bar_fragment"
-        android:name="org.linphone.call.CallStatusBarFragment"
+        android:name="org.vokka.call.CallStatusBarFragment"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         tools:layout="@layout/status_bar" />
