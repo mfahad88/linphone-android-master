@@ -287,10 +287,15 @@ public class StatusBarFragment extends Fragment {
     private void quit() {
         goHomeAndClearStack();
         Core core = LinphoneManager.getCore();
-        core.clearAllAuthInfo();
+        if (core.getProxyConfigList().length > 0) {
+            core.removeProxyConfig(core.getProxyConfigList()[0]);
+            core.removeAuthInfo(core.getAuthInfoList()[0]);
+        }
+
         if (LinphoneService.isReady()
                 && LinphonePreferences.instance().getServiceNotificationVisibility()) {
             LinphoneService.instance().stopSelf();
         }
+        getActivity().finish();
     }
 }

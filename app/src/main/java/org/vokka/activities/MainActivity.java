@@ -281,7 +281,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
 
                             if (!Compatibility.isDoNotDisturbSettingsAccessGranted(
                                     MainActivity.this)) {
-                                displayDNDSettingsDialog();
+                                // displayDNDSettingsDialog();
                             }
                         }
                     }

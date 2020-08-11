@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import org.linphone.core.Core;
 import org.vokka.LinphoneManager;
 import org.vokka.R;
 import org.vokka.assistant.MenuAssistantActivity;
@@ -73,13 +74,15 @@ public class LinphoneLauncherActivity extends Activity implements ServiceWaitThr
     @Override
     public void onServiceReady() {
         final Class<? extends Activity> classToStart;
-
+        Core core = LinphoneManager.getCore();
         boolean useFirstLoginActivity =
                 getResources().getBoolean(R.bool.display_account_assistant_at_first_start);
         if (useFirstLoginActivity && LinphonePreferences.instance().isFirstLaunch()) {
             classToStart = MenuAssistantActivity.class;
         } else {
-            if (getIntent().getExtras() != null) {
+            if (core.getProxyConfigList().length < 1) {
+                classToStart = MenuAssistantActivity.class;
+            } else if (getIntent().getExtras() != null) {
                 String activity = getIntent().getExtras().getString("Activity", null);
                 if (ChatActivity.NAME.equals(activity)) {
                     classToStart = ChatActivity.class;
