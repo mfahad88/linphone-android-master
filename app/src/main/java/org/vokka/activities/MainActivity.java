@@ -42,7 +42,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import java.util.ArrayList;
@@ -115,8 +114,8 @@ public abstract class MainActivity extends LinphoneGenericActivity
         mPrefs = LinphonePreferences.instance();
         mPrefs.setServiceNotificationVisibility(false);
         LinphoneContext.instance().getNotificationManager().stopForeground();
-        mPrefs.enableDarkMode(true);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        //        mPrefs.enableDarkMode(true);
+        //        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         RelativeLayout history = findViewById(R.id.history);
         history.setOnClickListener(
                 new View.OnClickListener() {
@@ -164,6 +163,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
         if (proxyConfigs.length > 0) {
             proxyConfigs[0].setServerAddr("<sip:sip.vokka.net;transport=tls>");
             proxyConfigs[0].edit();
+            proxyConfigs[0].setDialPrefix("");
             proxyConfigs[0].setRoute(proxyConfigs[0].getServerAddr());
             Address addr = proxyConfigs[0].getIdentityAddress();
             addr.setTransport(TransportType.Tls);
@@ -219,7 +219,7 @@ public abstract class MainActivity extends LinphoneGenericActivity
                 (SideMenuFragment)
                         getSupportFragmentManager().findFragmentById(R.id.side_menu_fragment);
         mSideMenuFragment.setDrawer(mSideMenu, mSideMenuContent);
-        mSideMenu.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        //        mSideMenu.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         if (getResources().getBoolean(R.bool.disable_chat)) {
             chat.setVisibility(View.GONE);
         }

@@ -97,7 +97,6 @@ public class AdvancedSettingsFragment extends SettingsFragment {
         mAndroidAppSettings = mRootView.findViewById(R.id.pref_android_app_settings);
 
         mDeviceName = mRootView.findViewById(R.id.pref_device_name);
-        mDarkMode.performClick();
     }
 
     private void setListeners() {
@@ -224,7 +223,8 @@ public class AdvancedSettingsFragment extends SettingsFragment {
 
         mStartAtBoot.setChecked(mPrefs.isAutoStartEnabled());
 
-        mDarkMode.setChecked(mPrefs.isDarkModeEnabled());
+        //        mDarkMode.setChecked(mPrefs.isDarkModeEnabled());
+        //        mDarkMode.performClick();
 
         mRemoteProvisioningUrl.setValue(mPrefs.getRemoteProvisioningUrl());
 
